@@ -41,18 +41,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        width: double.infinity,
+          height: double.infinity,   //to take all the space
+          color: Colors.amber,
+          child: Stack(
             children: [
-              Icon(Icons.local_activity_sharp,color: Colors.amber, size:50,),
-              SizedBox(width: 10,),
-              FaIcon(FontAwesomeIcons.iceCream,size: 50,color: Colors.blue,)
+              Positioned(
+                bottom: 20,
+                  right: 20,
+                  child: Container(
+                width: 70,
+                height: 70,
+                color: Colors.blue,
+              ))
+
             ],
-          ),
+          )
           
-        ),
+
       ),
 
     );
