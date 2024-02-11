@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -24,8 +22,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-
 
   final String title;
 
@@ -47,7 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          child: Text("hello"),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.local_activity_sharp,color: Colors.amber, size:50,),
+              SizedBox(width: 10,),
+              FaIcon(FontAwesomeIcons.iceCream,size: 50,color: Colors.blue,)
+            ],
+          ),
+          
         ),
       ),
 
