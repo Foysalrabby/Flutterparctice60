@@ -35,7 +35,9 @@ class MyHomePage extends StatefulWidget{
 
 // implement StatefulWidget of myhomepageclass in mystate class
 class Mystate extends State<MyHomePage>{
-  var count=0;
+  var textcontroller1=TextEditingController();
+  var textcontroller2=TextEditingController();
+  var result=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,23 +46,78 @@ class Mystate extends State<MyHomePage>{
          title: Text("this is stateful app",)
        ),
 
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("cunter: $count"),
-            ElevatedButton(onPressed: (){
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: textcontroller1,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter first number',
+                ),
+              ),
+              SizedBox(height: 10,),
+              TextField(
+                controller: textcontroller2,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter second number',
+                ),
 
-             count++;
-             print(count);
-             setState(() {
-               
-             });
-            }, child: Text("count"))
-          ],
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(padding: EdgeInsets.only(top: 60),),
+                  ElevatedButton(onPressed: (){
+                    var num1=int.parse(textcontroller1.text.toString());
+                    var num2=int.parse(textcontroller2.text.toString());
+                    result=num1+num2;
+                    print(result);
+                    setState(() {
+
+                    });
+                  }, child: Text("add")),
+                  ElevatedButton(onPressed: (){
+                    var num1=int.parse(textcontroller1.text.toString());
+                    var num2=int.parse(textcontroller2.text.toString());
+                    result=num1-num2;
+                    print(result);
+
+                    setState(() {
+                    });
+                  }, child: Text("sub")),
+                  ElevatedButton(onPressed: (){
+                    var num1=int.parse(textcontroller1.text.toString());
+                    var num2=int.parse(textcontroller2.text.toString());
+                    result=num1*num2;
+                    print(result);
+                    setState(() {
+                    });
+                  }, child: Text("mul")),
+                  ElevatedButton(onPressed: (){
+                    var num1=int.parse(textcontroller1.text.toString());
+                    var num2=int.parse(textcontroller2.text.toString());
+                    double result2=num1/num2;
+                    print(result2);
+                    setState(() {
+                    });
+                  }, child: Text("div"))
+                ],
+              ),
+              Text("Result : $result", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),)
+
+            ],
+          ),
+
+
         ),
-
-
       ),
 
 
