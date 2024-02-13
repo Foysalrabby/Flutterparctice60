@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myappflater/main.dart';
 
 class Slpashsceen extends StatefulWidget{
   @override
@@ -10,6 +13,17 @@ class Slpashsceen extends StatefulWidget{
 }
 class Slpahstate extends State<StatefulWidget>{
 
+   @override
+   void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration (seconds: 4,),(){
+      Navigator.pushReplacement(context,MaterialPageRoute(builder: (context){
+        return MyHomePage();
+      }));
+    }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
