@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:myappflater/introduc.dart';
+ import 'package:myappflater/introduc.dart';
 import 'package:myappflater/slpashscreen.dart';
 
 void main() {
@@ -46,7 +46,11 @@ class Mystate extends State<MyHomePage>{
          title: Text("this is stateful app",)
        ),
 
-      body:Text("hello"),
+      body:Center(
+        child: ElevatedButton(onPressed: (){
+          Navigator.push(context,MaterialPageRoute(builder: (context)=> Introduct()));
+        },child: Text("next"),)
+      )
 
 
     );

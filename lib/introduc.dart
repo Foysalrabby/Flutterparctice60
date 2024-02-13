@@ -22,7 +22,7 @@ class Introduct extends StatelessWidget{
           ElevatedButton(onPressed: (){
 
            // Navigator.push(context,MaterialPageRoute(builder: (context){return MyHomePage();}));
-            Navigator.push(context,MaterialPageRoute(builder: (context)=> MyHomePage()));
+           //  Navigator.push(context,MaterialPageRoute(builder: (context)=> MyHomePage()));
             //to go one page  to another
 
           }, child: Text("go next page"))
