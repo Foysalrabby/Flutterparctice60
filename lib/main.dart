@@ -37,6 +37,7 @@ class MyHomePage extends StatefulWidget{
 
 // implement StatefulWidget of myhomepageclass in mystate class
 class Mystate extends State<MyHomePage>{
+  var textcontroller1=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +47,28 @@ class Mystate extends State<MyHomePage>{
          title: Text("this is stateful app",)
        ),
 
-      body:Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context)=> Introduct()));
-        },child: Text("next"),)
+      body:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+          Padding(
+            padding: const EdgeInsets.all(19),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              controller:textcontroller1 ,
+              decoration: InputDecoration(
+                  hintText: "enter the name",
+
+
+              ),
+            ),
+          ),
+           ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> Introduct(textcontroller1.text.toString())));
+            },child: Text("next"),),
+
+
+        ],
       )
 
 

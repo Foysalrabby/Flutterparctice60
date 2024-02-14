@@ -2,7 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myappflater/main.dart';
 
+// ignore: use_key_in_widget_constructors
 class Introduct extends StatelessWidget{
+  var namehome;
+  Introduct(this.namehome);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +21,8 @@ class Introduct extends StatelessWidget{
             width: 200,
             height: 400,
             color: Colors.redAccent,
-            child: Text("this is new introduction page"),
+            child: Text("this is ${namehome}",style: TextStyle(color:
+            Colors.white, fontWeight: FontWeight.bold),),
           ),
           ElevatedButton(onPressed: (){
 
