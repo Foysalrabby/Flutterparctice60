@@ -88,7 +88,31 @@ class Mystate extends State<MyHomePage>{
                   ),
                 ),
                 SizedBox(height: 14,),
-                ElevatedButton(onPressed:bmicalculate, child: Text("Bmi cal")),
+                ElevatedButton(onPressed: (){
+                  var ftth=fth.text.toString();
+                  var finch=inch.text.toString();
+                  var fwaeight=weight.text.toString();
+                  var finalhfeet=int.parse(ftth);
+                  var finalhinch=int.parse(finch);
+                  var finalhweight=int.parse(fwaeight);
+                   var Totalheight=((finalhfeet*12)+finalhinch)*0.0254;
+                  if(ftth != "" && finch != "" && fwaeight!= ""){
+                       var bmi=(finalhweight/(Totalheight*Totalheight));
+
+                       setState(() {
+                         result="your Bmi is :${bmi}";
+                       });
+                  }
+                  else{
+                    result="Please fill all text";
+                    setState(() {
+
+                    });
+
+
+                  }
+
+                }, child: Text("Bmi cal")),
                 SizedBox(height: 14,),
                 Text(result,style: TextStyle(fontWeight: FontWeight.bold),),
               ],
@@ -104,6 +128,8 @@ class Mystate extends State<MyHomePage>{
   }
 
   void bmicalculate(){
+
+    {
       var ftth=fth.text.toString();
       var finch=inch.text.toString();
       var fwaeight=weight.text.toString();
@@ -125,7 +151,7 @@ class Mystate extends State<MyHomePage>{
         });
 
 
-
+      }
 
     }
 
