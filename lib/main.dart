@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,40 +39,34 @@ class MyHomePage extends StatefulWidget{
 
 // implement StatefulWidget of myhomepageclass in mystate class
 class Mystate extends State<MyHomePage>{
-  var textcontroller1=TextEditingController();
+  RangeValues valuesare= RangeValues(1, 100);
 
   @override
   Widget build(BuildContext context) {
+    RangeLabels rangeLabels=RangeLabels(valuesare.start.toString(), valuesare.end.toString());
     return Scaffold(
        appBar:AppBar(
          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
          title: Text("this is stateful app",)
        ),
 
-      body:Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      body:Center(
+        child: RangeSlider(
+          values:valuesare,
+          labels: rangeLabels,
+          divisions: 20,
+          activeColor: Colors.black, //chage rage color
+          inactiveColor: Colors.amber,
+          min: 1,
+          max: 100,
+          onChanged: (RangeValues value) {
+               valuesare=value;
+            setState(() {
 
-          Padding(
-            padding: const EdgeInsets.all(19),
-            child: TextField(
-              keyboardType: TextInputType.text,
-              controller:textcontroller1 ,
-              decoration: InputDecoration(
-                  hintText: "enter the name",
-
-
-              ),
-            ),
-          ),
-           ElevatedButton(onPressed: (){
-              Navigator.push(context,MaterialPageRoute(builder: (context)=> Introduct(textcontroller1.text.toString())));
-            },child: Text("next"),),
-
-
-        ],
-      )
-
+            });
+          } ,
+        ),
+      ),
 
     );
   }
