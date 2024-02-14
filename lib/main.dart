@@ -39,36 +39,96 @@ class MyHomePage extends StatefulWidget{
 
 // implement StatefulWidget of myhomepageclass in mystate class
 class Mystate extends State<MyHomePage>{
-  RangeValues valuesare= RangeValues(1, 100);
-
+    var fth=TextEditingController();
+    var inch=TextEditingController();
+    var weight=TextEditingController();
+    var result="hello";
   @override
   Widget build(BuildContext context) {
-    RangeLabels rangeLabels=RangeLabels(valuesare.start.toString(), valuesare.end.toString());
     return Scaffold(
        appBar:AppBar(
          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
          title: Text("this is stateful app",)
        ),
 
-      body:Center(
-        child: RangeSlider(
-          values:valuesare,
-          labels: rangeLabels,
-          divisions: 20,
-          activeColor: Colors.black, //chage rage color
-          inactiveColor: Colors.amber,
-          min: 1,
-          max: 100,
-          onChanged: (RangeValues value) {
-               valuesare=value;
-            setState(() {
+      body:Container(
+        color: Colors.amber,
+          child:Center(
+            child: Container(
+              width: 300,
+              child: Column (
+                mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Text("BMI CALCULATOR",style: TextStyle(fontWeight: FontWeight.bold),),
+                TextField(
+                  controller: fth,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Enter your hegiht in feet",
+                    prefix: Icon(Icons.height_sharp),
+                  ),
+                ),
+                TextField(
+                  controller: inch,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Enter your hegiht in inch",
+                    prefix: Icon(Icons.height_sharp),
+                  ),
+                ),
+                TextField(
+                  controller: weight,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Enter your hegiht in weight",
+                    prefix: Icon(Icons.monitor_weight),
+                  ),
+                ),
+                SizedBox(height: 14,),
+                ElevatedButton(onPressed:bmicalculate, child: Text("Bmi cal")),
+                SizedBox(height: 14,),
+                Text(result,style: TextStyle(fontWeight: FontWeight.bold),),
+              ],
 
-            });
-          } ,
-        ),
-      ),
+              ),
+            ),
+          ))
 
     );
+
+
+
+  }
+
+  void bmicalculate(){
+      var ftth=fth.text.toString();
+      var finch=inch.text.toString();
+      var fwaeight=weight.text.toString();
+      var finalhfeet=int.parse(ftth);
+      var finalhinch=int.parse(finch);
+      var finalhweight=int.parse(fwaeight);
+      var Totalheight=((finalhfeet*12)+finalhinch)*0.0254;
+      if(ftth != "" && finch != "" && fwaeight!= ""){
+        var bmi=(finalhweight/(Totalheight*Totalheight));
+
+        setState(() {
+          result="your Bmi is :${bmi}";
+        });
+      }
+      else{
+        result="Please fill all text";
+        setState(() {
+
+        });
+
+
+
+
+    }
+
   }
 
 }
